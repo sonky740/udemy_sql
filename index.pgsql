@@ -12,6 +12,7 @@
 -- 
 /* ★ WHERE
  * 열에 조건 지정하여 맞는 행 도출
+ * 집계함수 사용 불가
  */
 -- SELECT * from customer WHERE first_name = 'Jared';
 -- SELECT COUNT(title) FROM film WHERE rental_rate > 4 AND replacement_cost >= 19.99 AND rating = 'R';
@@ -64,8 +65,41 @@
 -- SELECT MAX(replacement_cost) FROM film;
 -- SELECT MAX(replacement_cost), MIN(replacement_cost) FROM film;
 -- SELECT ROUND(AVG(replacement_cost), 2) FROM film;
-SELECT SUM(replacement_cost) FROM film;
+-- SELECT SUM(replacement_cost) FROM film;
 --  
 /* ★ GROUP BY
- * 
+ * 카테고리별로 열을 집계
+ * FROM 바로 뒤 or WHERE 바로 뒤에 있어야함.
+ */
+-- SELECT customer_id, SUM(amount) FROM payment GROUP BY customer_id ORDER BY SUM(amount) DESC;
+-- SELECT staff_id, customer_id, SUM(amount) FROM payment GROUP BY staff_id, customer_id ORDER BY staff_id, customer_id;
+-- SELECT DATE(payment_date), SUM(amount) FROM payment GROUP BY DATE(payment_date) ORDER BY SUM(amount) DESC;
+-- SELECT staff_id, COUNT(amount) FROM payment GROUP BY staff_id;
+-- SELECT rating, AVG(replacement_cost) FROM film GROUP BY rating;
+-- SELECT customer_id, SUM(amount) FROM payment GROUP BY customer_id ORDER BY SUM(amount) DESC LIMIT 5;
+-- 
+/* ★ HAVING
+ * 집계가 이미 수행된 "이후에" 자료 필터링
+ * WHERE절에서 집계함수를 못쓰므로 HAVING절에서 사용.
+ */
+-- SELECT customer_id, SUM(amount) FROM payment GROUP BY customer_id HAVING SUM(amount) > 100;
+-- SELECT store_id, COUNT(customer_id) FROM customer GROUP BY store_id HAVING COUNT(customer_id) > 300;
+-- SELECT customer_id, COUNT(amount) FROM payment GROUP BY customer_id HAVING COUNT(amount) >= 40 ORDER BY COUNT(amount) DESC;
+-- SELECT customer_id, SUM(amount) FROM payment WHERE staff_id = 2 GROUP BY customer_id HAVING SUM(amount) > 100;
+-- 
+/* ★ AS
+ * 열이나 결과에 별칭을 부여.
+ * 순전히 가독성을 위함.
+ * 쿼리의 맨 마지막에 실행되므로, WHERE절이나 GROUP BY 호출에 사용 불가.
+ * ORDER BY에는 가능.
+ */
+-- SELECT customer_id, SUM(amount) AS amount_sum FROM payment GROUP BY customer_id ORDER BY amount_sum DESC;
+-- 
+/* ★ INNER JOIN (JOIN = INNER JOIN)
+ * 결합 되는 테이블을 모두 충족 (교집합)
+ */
+SELECT payment_id, payment.customer_id, first_name FROM payment INNER JOIN customer ON payment.customer_id = customer.customer_id;
+-- 
+/* ★ FULL OUTER JOIN
+ * 결합 되는 테이블의 모든 데이터
  */
