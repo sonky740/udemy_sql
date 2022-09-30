@@ -96,10 +96,30 @@
 -- SELECT customer_id, SUM(amount) AS amount_sum FROM payment GROUP BY customer_id ORDER BY amount_sum DESC;
 -- 
 /* ★ INNER JOIN (JOIN = INNER JOIN)
- * 결합 되는 테이블을 모두 충족 (교집합)
+ * 결합 되는 테이블을 모두 충족 (교집합) 
  */
-SELECT payment_id, payment.customer_id, first_name FROM payment INNER JOIN customer ON payment.customer_id = customer.customer_id;
+-- SELECT payment_id, payment.customer_id, first_name FROM payment INNER JOIN customer ON payment.customer_id = customer.customer_id;
 -- 
-/* ★ FULL OUTER JOIN
+/* ★ FULL OUTER JOIN (FULL JOIN)
  * 결합 되는 테이블의 모든 데이터
  */
+-- SELECT * FROM customer FULL JOIN payment ON customer.customer_id = payment.customer_id WHERE customer.customer_id IS null OR payment.payment_id IS null;
+-- 
+/* ★ LEFT OUTER JOIN (LEFT JOIN)
+ * 왼쪽 테이블에 있는 레코드 세트를 결과로 출력
+ * 비대칭이기때문에 테이블 순서 중요.
+ */
+-- SELECT film.film_id, film.title, inventory_id, store_id FROM film LEFT JOIN inventory ON inventory.film_id = film.film_id WHERE inventory.film_id IS null; -- film에 속한것만 가져옴.
+-- 
+/* ★ RIGHT OUTER JOIN (RIGHT JOIN)
+ * 오른쪽 테이블에 있는 레코드 세트를 결과로 출력
+ * 비대칭이기때문에 테이블 순서 중요.
+ */
+-- SELECT film.film_id, film.title, inventory_id, store_id FROM inventory RIGHT JOIN film ON inventory.film_id = film.film_id WHERE inventory.film_id IS null; -- film에 속한것만 가져옴.
+-- 
+/* ★ UNION
+ * 2개 이상의 SELECT문의 결과를 결합
+ * JOIN과는 다르게 그냥 그대로 갖다 붙임.
+ * 같은 수의 컬럼과 자료 구조가 동일 해야함.
+ */
+-- SELECT * FROM film_actor UNION SELECT * FROM film_category;
