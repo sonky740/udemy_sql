@@ -99,11 +99,14 @@
  * 결합 되는 테이블을 모두 충족 (교집합) 
  */
 -- SELECT payment_id, payment.customer_id, first_name FROM payment INNER JOIN customer ON payment.customer_id = customer.customer_id;
+-- SELECT district, email FROM address INNER JOIN customer ON customer.address_id = address.address_id WHERE district LIKE 'California';
+-- SELECT title, first_name, last_name FROM film INNER JOIN film_actor ON film_actor.film_id = film.film_id INNER JOIN actor ON actor.actor_id = film_actor.actor_id WHERE first_name = 'Nick' AND last_name = 'Wahlberg';
 -- 
 /* ★ FULL OUTER JOIN (FULL JOIN)
  * 결합 되는 테이블의 모든 데이터
  */
 -- SELECT * FROM customer FULL JOIN payment ON customer.customer_id = payment.customer_id WHERE customer.customer_id IS null OR payment.payment_id IS null;
+-- SELECT * FROM actor WHERE first_name LIKE 'Nick' AND last_name LIKE 'Wahlberg';
 -- 
 /* ★ LEFT OUTER JOIN (LEFT JOIN)
  * 왼쪽 테이블에 있는 레코드 세트를 결과로 출력
@@ -123,3 +126,4 @@
  * 같은 수의 컬럼과 자료 구조가 동일 해야함.
  */
 -- SELECT * FROM film_actor UNION SELECT * FROM film_category;
+--
