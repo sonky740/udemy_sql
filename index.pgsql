@@ -126,4 +126,22 @@
  * 같은 수의 컬럼과 자료 구조가 동일 해야함.
  */
 -- SELECT * FROM film_actor UNION SELECT * FROM film_category;
---
+-- 
+/* ★ Timestamp
+ * 시간, 날짜에 대한 쿼리.
+ * INSERT에서 유용함.
+ */
+-- SELECT NOW();
+-- SELECT TIMEOFDAY();
+-- SELECT CURRENT_DATE;
+-- 
+/* ★ Extract
+ * 년, 월, 일, 주 , 분기별로 추출
+ * https://www.postgresql.org/docs/12/functions-formatting.html
+ */
+-- SELECT EXTRACT(MONTH FROM payment_date) AS pay_month FROM payment;
+-- SELECT EXTRACT(QUARTER FROM payment_date) FROM payment;
+-- SELECT AGE(payment_date) FROM payment;
+-- SELECT to_char(payment_date, 'yyyy-MM-dd') FROM payment;
+-- SELECT DISTINCT(to_char(payment_date, 'MONTH')) FROM payment;
+-- SELECT COUNT(*) FROM payment WHERE EXTRACT(dow FROM payment_date) = 1;
