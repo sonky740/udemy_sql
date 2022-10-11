@@ -1,0 +1,9 @@
+-- Active: 1664945899270@@sonky.myasustor.com@3306@udemy
+-- SELECT REVERSE(UPPER("Why does my cat look at me with such hatred?"));
+-- SELECT REPLACE(CONCAT('I', ' ', 'like', ' ', 'cats'), ' ', '-');
+-- SELECT REPLACE(title, ' ', '->') AS title FROM books;
+-- SELECT author_lname, REVERSE(author_lname) FROM books;
+-- SELECT UPPER(CONCAT(author_fname, ' ', author_lname)) AS full_name FROM books;
+-- SELECT CONCAT(title, ' was released in ', released_year) AS book_info FROM books;
+-- SELECT title, CHAR_LENGTH(title) FROM books;
+-- SELECT CONCAT(SUBSTR(title, 1, 10), '...') AS 'short title', CONCAT(author_lname, ', ', author_fname) AS author, CONCAT(stock_quantity, ' in stock') AS quantity FROM books;

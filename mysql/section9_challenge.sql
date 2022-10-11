@@ -1,0 +1,6 @@
+-- Active: 1664945899270@@sonky.myasustor.com@3306@udemy
+-- SELECT COUNT(*), released_year FROM books GROUP BY released_year;
+-- SELECT SUM(stock_quantity) FROM books;
+-- SELECT ROUND(AVG(released_year), 0) FROM books GROUP BY author_lname, author_fname;
+-- SELECT CONCAT(author_fname, ' ', author_lname), released_year FROM books ORDER BY pages DESC LIMIT 1;
+-- SELECT released_year AS year, COUNT(*) AS '# of books', AVG(pages) AS 'avg pages' FROM books GROUP BY released_year;
