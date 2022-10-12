@@ -19,3 +19,4 @@
 --     username VARCHAR(20),
 --     created_at TIMESTAMP DEFAULT NOW ()
 --   )
+-- SELECT DATE_FORMAT (NOW (), '%Y년%m월%d일 %H시%i분%S초');

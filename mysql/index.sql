@@ -38,4 +38,9 @@
 --     content VARCHAR(100),
 --     changed_at TIMESTAMP DEFAULT NOW () ON UPDATE CURRENT_TIMESTAMP
 --   );
-
+-- SELECT * FROM orders JOIN customers ON orders.customer_id = customers.id WHERE last_name = 'George';
+/* INNER JOIN */
+/* IMPLICIT INNER JOIN */
+-- SELECT * FROM customers, orders WHERE customers.id = orders.customer_id;
+/* EXPLICIT INNER JOIN */
+-- SELECT * FROM customers JOIN orders ON orders.customer_id = customers.id;
