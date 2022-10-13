@@ -1,0 +1,62 @@
+-- Active: 1664945899270@@sonky.myasustor.com@3306@udemy
+-- SELECT
+--   title,
+--   rating
+-- FROM
+--   series
+--   JOIN reviews ON series.id = reviews.series_id;
+-- SELECT
+--   title,
+--   AVG(rating) AS avg_rating
+-- FROM
+--   series
+--   JOIN reviews ON series.id = reviews.series_id
+-- GROUP BY
+--   title
+-- ORDER BY
+--   avg_rating;
+-- SELECT
+--   first_name,
+--   last_name,
+--   rating
+-- FROM
+--   reviewers
+--   JOIN reviews ON reviewers.id = reviews.reviewer_id;
+-- SELECT
+--   title AS unreviewed_series
+-- FROM
+--   series
+--   LEFT JOIN reviews ON series.id = reviews.series_id
+-- WHERE
+--   rating IS NULL;
+-- SELECT
+--   genre,
+--   AVG(rating) AS avg_rating
+-- FROM
+--   series
+--   JOIN reviews ON series.id = reviews.series_id
+-- GROUP BY
+--   genre;
+-- SELECT
+--   first_name,
+--   last_name,
+--   COUNT(rating) AS COUNT,
+--   IFNULL (MIN(rating), 0) AS MIN,
+--   IFNULL (MAX(rating), 0) AS MAX,
+--   Round(IFNULL (AVG(rating), 0), 2) AS AVG,
+--   IF (COUNT(rating) > 0, 'ACTIVE', 'INACTIVE') AS STATUS
+-- FROM
+--   reviewers
+--   LEFT JOIN reviews ON reviewers.id = reviews.reviewer_id
+-- GROUP BY
+--   reviewers.id;
+-- SELECT
+--   title,
+--   rating,
+--   CONCAT (first_name, ' ', last_name) AS reviewer
+-- FROM
+--   reviewers
+--   JOIN reviews ON reviewers.id = reviews.reviewer_id
+--   JOIN series ON series.id = reviews.series_id
+-- ORDER BY
+--   title;
